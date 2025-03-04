@@ -59,7 +59,7 @@ class ValorantRandomizer(App):
 
         self.remove = [
             "Astra", "Chamber", "Fade", "Harbor", "Iso",
-            "Killjoy", "Omen", "Raze", "Skye"
+            "Killjoy", "Raze", "Skye"
         ]
 
         for i in self.remove:
@@ -90,6 +90,12 @@ class ValorantRandomizer(App):
             "Sheriff"
         ]
 
+        self.shields = [
+            "Bouclier léger",
+            "Bouclier lourd",
+            "Bouclier régénératif"
+        ]
+
         self.layout = BoxLayout(
             orientation='vertical',
             padding=100,
@@ -107,7 +113,12 @@ class ValorantRandomizer(App):
 
         self.spinner = Spinner(
             text="Choisis l'objet !",
-            values=("Agents", "Armes principales", "Armes secondaires"),
+            values=(
+                "Agents",
+                "Armes principales",
+                "Armes secondaires",
+                "Boucliers"
+            ),
             size_hint=(None, None),
             size=(500, 100),
             font_size=50,
@@ -172,6 +183,8 @@ class ValorantRandomizer(App):
                 self.label.text = choice(self.agents)
             elif self.selected_option == "Armes principales":
                 self.label.text = choice(self.primary_weapons)
+            elif self.selected_option == "Boucliers":
+                self.label.text = choice(self.shields)
             else:
                 self.label.text = choice(self.secondary_weapons)
             self.index += 1
@@ -183,6 +196,8 @@ class ValorantRandomizer(App):
                     self.label.text = choice(self.agents)
                 elif self.selected_option == "Armes principales":
                     self.label.text = choice(self.primary_weapons)
+                elif self.selected_option == "Boucliers":
+                    self.label.text = choice(self.shields)
                 else:
                     self.label.text = choice(self.secondary_weapons)
             self.button.disabled = False
